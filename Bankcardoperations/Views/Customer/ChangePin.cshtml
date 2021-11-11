@@ -1,0 +1,35 @@
+﻿@using System.Data; 
+
+@model DataTable
+@{
+    ViewBag.Title = "ChangePin";
+}
+
+<h2>@ViewBag.Title</h2>
+<br />
+<div class="text-danger">
+    <h2>@TempData["Error_message"]</h2>
+</div>
+<br />
+
+<div>
+    <form action="/Customer/ChangePin" method="post">
+        <label>
+            Old Pin:<br />  <input type="text" name="oldpin"  title="Please enter 4-digit numeric sinvol " maxlength="4" pattern="\d{4}"   required/>
+        </label><br />
+        <label>
+            New Pin:<br /><input type="text" name="newpin" title="Please enter 4-digit numeric sinvol "  maxlength="4" pattern="\d{4}"   required/>
+        </label><br />
+        <label>
+            <input type="submit"   value="Change" style="background-color: #5ad09d;  border:none " />
+        </label>
+        <label>
+            <input type="reset"  value="Cancel" style="background-color: #ff5f5f; border:none" /><br />
+        </label><br /><br />
+        <label>
+            <a href="~/Customer/CustomerOperations"><input type="button" name="button " value="Back" style="background-color: #ff5f5f; border:none;width:80px" /></a>
+        </label><br />
+    </form>
+</div>
+
+

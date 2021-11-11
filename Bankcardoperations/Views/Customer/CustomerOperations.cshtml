@@ -1,0 +1,56 @@
+﻿
+@using System.Data;
+
+@{
+    ViewBag.Title = "Operations";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@model DataTable
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <form>
+        <br /><br />
+        <div>
+            <p>
+                <h1>
+                    Balance:  @Model.Rows[0]["Balance"]  $
+                </h1>
+            </p>
+        </div>
+        <br />
+        <br />
+        <label>
+            <a href='/Customer/AddAmount'>Add Amount</a>
+        </label>
+        <label>
+            <a href="/Customer/WithdrawAmount">Withdrawal Of Funds</a>
+        </label>
+        <label>
+            <a href="/Customer/ChangePin">Changing The Pin Code</a>
+        </label>
+        <label>
+            <a href="/Customer/History">History</a>
+        </label>
+        <label>
+            <a href="/Home/Index">Exit</a>
+        </label>
+    </form>
+    <style>
+        label {
+            background-color: #2ec3b5;
+            color: white;
+            border: none;
+            font-size: 3rem;
+            border-radius: 5px 3px;
+            padding: 10px;
+        }
+    </style>
+
+</body>
+</html>

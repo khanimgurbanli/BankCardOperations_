@@ -1,0 +1,66 @@
+﻿
+@using System.Data;
+
+@{
+    ViewBag.Title = "Create New Card";
+}
+<h2>@ViewBag.Title</h2>
+<br />
+<br />
+
+@model DataTable
+
+<div class="text-success">
+    <h2>@TempData["ApplyForCard"]</h2>
+</div>
+
+<div class="text-danger">
+    <h2>@TempData["MailNotfound"]</h2>
+</div>
+
+<div class="text-danger">
+    <h2>@TempData["IncorrectFormatEmail"]</h2>
+</div>
+
+<div class="text-danger">
+    <h2>@TempData["ForEmptyFields"]</h2>
+</div>
+
+<div class="text-danger">
+    <h2>@TempData["BirthdateMessage"]</h2>
+</div>
+
+<div class="text-danger">
+    <h2>@TempData["BirthdatError"]</h2>
+</div>
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <div>
+        <form asp-action="CreateNewCard" asp-controller="Operator" method="post">
+            <label>
+                Name <br />
+                <input type="text" name="name" id="textname" style="text-transform: capitalize" required title="Please enter just letters" pattern="[a-zA-Z]+" minlength="3" maxlength="50" />
+            </label><br />
+            <label>
+                Surname<br />
+                <input type="text" name="surname" id="textsurname" style="text-transform: capitalize" required title="Please enter just letters" pattern="[a-zA-Z]+" minlength="3" maxlength="50" />
+            </label><br />
+            <label>
+                Email<br />
+                <input type="email" name="mail" id="emailemail" title="Please enter correct e-mail adress" required minlength="5" />
+            </label><br />
+            <label>
+                Birtdate<br />
+                <input type="date" name="birthdate" id="datebirthdate" title="Please enter correct date" required />
+            </label><br /><br />
+            <button class="btn btn-success">Apply</button>
+            <button class=" btn btn-danger">Change</button><br /><br />
+        </form>
+    </div>
+</body>
+</html>
+

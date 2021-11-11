@@ -1,0 +1,44 @@
+﻿
+@using System.Data;
+
+@model DataTable
+@{
+    ViewBag.Title = "Customer Enterence";
+}
+
+<h2> @ViewBag.Title</h2>
+<br />
+<br />
+
+<div class="text-danger">
+    <h2>@TempData["ErrorMessage"]</h2>
+</div>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <meta>
+</head>
+<body>
+    <div>
+        <form asp-action="Customer" asp-controller="CustomerLogin" method="post">
+            <label>
+                Card number:<br />
+                <input type="text" name="cardnumber" id="textcardnumber" maxlength="16" pattern="\d{16}" title="Only 16 caracters consisting of numbers must be entered" required />
+            </label><br />
+            <label>
+                Pin:<br />
+                <input type="password" name="pin" id="textpin" maxlength="4" pattern="\d{4}" title="Only 4-digit caracters can be entered" required />
+            </label><br /><br />
+            <label>
+                <input type="submit" value="Enter" style="background-color: #5ad09d ; border: none " />
+            </label>
+            <label>
+                <input type="reset" value="Change" style="background-color: #ff5f5f; border: none" />
+            </label><br />
+        </form>
+    </div>
+</body>
+</html>
+

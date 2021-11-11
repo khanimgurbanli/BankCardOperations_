@@ -1,0 +1,52 @@
+﻿@using System.Data;
+@model DataTable
+@{
+    ViewBag.Title = "History";
+}
+
+<h2>History</h2>
+<br />
+<!DOCTYPE html>
+<html >
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <form action="/Customer/Filter" method="post">
+        <label>
+            From date: <input type="date" name="start_date" required  min="1930-02-01" max="2021-12-31" maxlength="4" />
+        </label>
+        <label>
+            To date: <input type="date" name="end_date" required  min="1930-02-01" max="2021-12-31" maxlength="4"/>
+        </label>
+        <label>
+            <a href="/Customer/Filter"><input type="submit" value="Search" style="background-color:deepskyblue; border:none" /></a>
+        </label>
+    </form><br /><br />
+    <div>
+        <table class="table tab-content" border="1">
+            <thead>
+                <tr style="background-color:#6abdd0">
+                    <th>History</th>
+                    <th>Status</th>
+                    <th>Amount</th>
+                </tr>
+            <tbody>
+                @foreach (DataRow row
+                    in Model.Rows)
+                {
+                    <tr>
+                        <td>@row["Time"].ToString()</td>
+                        <td>@row["Status"].ToString()</td>
+                        <td>@row["Amount"].ToString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div><br /><br />
+    <div>
+        <a href="~/Operator/OperatorOperations"><input type="button" value="Back" style="background-color:#f70800; border:none;width:80px" /></a>
+    </div>
+</body>
+</html>
+

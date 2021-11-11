@@ -1,0 +1,66 @@
+﻿
+@using System.Data;
+
+@model DataTable
+
+@{
+    ViewBag.Title = "Change Card Info";
+}
+
+<h2>@ViewBag.Title</h2>
+<br />
+<br />
+<div class="text-success">
+    <h2>@TempData["ChangeSuccesMessage"]</h2>
+</div>
+ 
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <div class="text-primary">
+        <h2>Card Number: @Session["CardNumber"]</h2>
+    </div>
+    <div class="text-primary"><h2>@TempData["Message"]</h2></div>
+    <div>
+        <form asp-action="ChangeCardInfo" asp-controller="Operator" method="post">
+            <table class="table tab-content" border="1">
+                <tr>
+                </tr>
+            </table>
+            <label>
+                Name <br />
+                <input type="text" name="name" id="textname" placeholder="@Session["Name"]" title="Please enter just letters" pattern="[a-zA-Z]+" required />
+            </label><br />
+            <label>
+                Surname<br />
+                <input type="text" name="surname" id="textsurname" placeholder="@Session["Surname"]" title="Please enter just letters" pattern="[a-zA-Z]+" required />
+            </label><br />
+            <label>
+                Birthdate<br />
+                <input type="date" name="birthdate" id="datebirthdate" placeholder="@Session["Birthdate"]" title="Please enter correct date" required />
+            </label><br />
+            <label>
+                Email<br />
+                <input type="email" name="email" id="emailemail" placeholder="@Session["Email"]" title="Please enter correct e-mail adress" required />
+            </label><br />
+            <label>
+                Pin<br />
+                <input type="text" name="pin" id="textpin" placeholder="@Session["Pin"]" title="Please enter 4-digit numeric sinvol " required />
+            </label><br /><br />
+            <label>
+                <a href="~/Operator/OperatorOperations"><input type="submit" value="Confirm" style="background-color: #5ad09d ; border: none " /></a>
+            </label>
+            <label>
+                <input type="reset" value="Cancel" style="background-color: #ff5f5f; border: none" />
+            </label><br />
+            <label>
+                <a href="~/Operator/OperatorOperations"><input type="button" value="Back" style="background-color: #ff5f5f; border:none;width:80px" /></a>
+            </label>
+        </form>
+    </div>
+</body>
+</html>
+

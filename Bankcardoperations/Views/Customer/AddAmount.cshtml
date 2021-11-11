@@ -1,0 +1,36 @@
+﻿@using System.Data;
+
+@model DataTable
+@{
+    ViewBag.Title = "AddAmount";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta>
+</head>
+<body>
+    <h2>@ViewBag.Title</h2>
+    <div>
+        <form action="/Customer/AddAmount" method="post">
+            <label>
+                Amount:<input type="number"step="0.0001" pattern="{19,.4}" name="amount" id="textamount" style="width:450px" required />
+            </label><br /><br />
+            <label>
+                <input type="submit" value="Save" style="background-color: #5ad09d; border: none; width: 100px;" />
+            </label>
+            <label>
+                <input type="reset" value="Cancel" style="background-color: #ff5f5f; border: none; width: 100px; "/>
+            </label><br /><br />
+            <label>
+                <a href="~/Customer/CustomerOperations"><input type="button" value="Back" style="background-color: #f70800; border: none; width: 80px" /></a>
+            </label>
+        </form>
+    </div>
+</body>
+</html>
+
+
+

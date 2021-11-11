@@ -1,0 +1,41 @@
+﻿
+@using System.Data;
+
+@{
+    ViewBag.Title = "Operator Enterence ";
+}
+
+<h2>@ViewBag.Title</h2>
+<br />
+<br />
+
+<div class="text-danger">
+    <h2>@TempData["Exception"]</h2>
+</div>
+
+<div class="text-danger">
+    <h2>@TempData["ErrorMessage"]</h2>
+</div>
+
+
+@model DataTable
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+    <form action="/Operator/OperatorLogin" method="post">
+        <label>
+            Code: <br /><input type="password" name="pin" placeholder="Enter Your Code..." maxlength="4" pattern="\d{4}" title="Only 4-digit caracters can be entered" required />
+        </label><br /><br />
+        <label>
+            <input type="submit" value="Enter" style="background-color: #5ad09d ; border: none " />
+        </label>
+        <label>
+            <input type="reset" value="Reset" style="background-color: #ff5f5f; border: none" />
+        </label><br />
+    </form>
+</body>
+</html>

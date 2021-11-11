@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "OperatorOperations";
+}
+
+@using System.Data;
+@model  DataTable
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Operations</title>
+</head>
+<body>
+    <h2>@ViewBag.Title</h2>
+    <br />
+    <br />
+    <div>
+        <a href="/Operator/CreateNewCard"><input type="button" value="Create New Card" style="background-color:lightseagreen;border:none;width:200px " /></a><br /><br />
+        <table class="table tab-content" border="1">
+            <tr style="background-color:#6abdd0">
+                <th> Card </th>
+                <th> Name And Surname</th>
+                <th> Birthdate</th>
+                <th> Apply date </th>
+                <th> Status </th>
+                <th> Operation </th>
+            </tr>
+            <tbody>
+
+                @foreach (DataRow row in Model.Rows)
+                {
+                    <tr>
+                        <td>@row["CardNumber"]</td>
+                        <td>@row["Name"] @row["Surname"]</td>
+                        <td>@row["Birthdate"]</td>
+                        <td>@row["Time"]</td>
+                        @if (@row["Status"].ToString() == "1")
+                        {
+                            <td>Aproved</td>
+                            <td>
+                                <a href="/Operator/Delete?card_number=@row["CardNumber"].ToString()" style="color:red">Delete</a>
+                                <a style="color:green" href="/Operator/ChangeCardInfo?card_number=@row["CardNumber"].ToString()&name=@row["Name"].ToString()&surname=@row["Surname"].ToString()&birthdate=@row["Birthdate"].ToString()&email=@row["Email"].ToString()&pin=@row["Pin"]">Change Info</a>
+                                <a href="/Customer/History?card_number=@row["CardNumber"].ToString()" style="color:blue">User History</a>
+                            </td>
+                        }
+                        else if (@row["Status"].ToString() == "2")
+                        {
+                            <td>Deleted</td>
+                            <td><a href="/Customer/History?card_number=@row["CardNumber"].ToString()" style="color:blue">User History</a></td>
+                        }
+                        else if (@row["Status"].ToString() == "0")
+                        {
+                            <td> Pending aproval</td>
+                            <td>
+                                <a style="color:red" href="/Operator/RejectCardRequest?card_number=@row["CardNumber"].ToString()">Reject</a>
+                                <a style="color:green" href="/Operator/AcceptCardRequest?card_number=@row["CardNumber"].ToString()">Confirm</a>
+                            </td>
+                        }
+                        else if (@row["Status"].ToString() == "-1")
+                        {
+                            <td>Rejected</td>
+                            <td style="color:blue">No transactions were registered</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
